@@ -1,36 +1,26 @@
 from random import randint
 
+class Combantant(object):
+    def __init__(self):
+
+        health = int(100)
 
 
-
-
-
-class BadGuy(object):
-
-
-    health = 100
-    HP = int(health)
-
-class GoodGuy(object): 
-
-
-    health = 100
-    HP = int(health)
 
 
 class Hero(GoodGuy):
-    pass
+    def __init__(self)
+
 
 class Weapon(object):
     pass
 
 
-class Machete(Weapon):
+
     DMG = randint(8,20)
 
 
-class Rifile(Weapon):
-    DMG = randint(12,15)
+
 
 
         

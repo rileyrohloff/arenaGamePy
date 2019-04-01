@@ -1,4 +1,6 @@
-from characters import Rifile
+from characters import Weapon, Hero
+from random import randint
+
 
 
 class Scene(object):
@@ -46,7 +48,11 @@ class WeponChoice(Scene):
 
 
 class AreanEntrance(Scene):
-     pass
+     def start_scene(self):
+          print(f"""
+          You selected as your weapon. You are now being escorted to the arena! 
+          You walk out into a massive, bloodsplatter sandpit. Surronded by hundreds of bloodthirsty scanvengers and bandits a like.
+          They all want to see what you're made of!""")
 
 
 class OpponentEncounter(Scene):
@@ -67,8 +73,10 @@ class Victory(Scene):
      
 
 
-# f = WeponChoice()
-# f.enter()
+Rifle = Weapon()
+Rifle.DMG = randint(12-17)
 
-# gun = Rifile()
-# print(gun.DMG)
+Machete = Weapon()
+Machete.DMG = randint(8,20)
+
+
