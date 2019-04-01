@@ -19,4 +19,18 @@ class GoodGuy(object):
 
 
 class Hero(GoodGuy):
-    name = input(">> ")
+    pass
+
+class Weapon(object):
+    pass
+
+
+class Machete(Weapon):
+    DMG = randint(8,20)
+
+
+class Rifile(Weapon):
+    DMG = randint(12,15)
+
+
+        
