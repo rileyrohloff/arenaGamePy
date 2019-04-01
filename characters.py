@@ -8,8 +8,10 @@ class Combantant(object):
 
 
 
-class Hero(GoodGuy):
-    def __init__(self)
+class Hero(Combantant):
+    def __init__(self):
+        pass
+        
 
 
 class Weapon(object):
@@ -19,7 +21,11 @@ class Weapon(object):
 
     DMG = randint(8,20)
 
+Rifle = Weapon()
+Rifle.DMG = randint(12,17)
 
+Machete = Weapon()
+Machete.DMG = randint(8,20)
 
 
 

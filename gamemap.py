@@ -1,25 +1,31 @@
 from characters import Weapon, Hero
+import characters
 from random import randint
+from sys import exit
 
+
+def play():
+     scene1 = WeponChoice()
+     print(scene1)
 
 
 class Scene(object):
-     pass
+     def enter(self):
+        print("This scene is not yet configured.")
+        print("Subclass it and implement enter().")
+        exit(1)
 
-class Engine(object):
-    def __init__(self,scene_map):
-        self.scene_map = scene_map
+class Death(Scene):
+     
+     quips = [
+          "The Arena Master shoots you from his Box Stand...Dead",
 
-    def play(self):
-        current_scene = self.scene_map.opening_scene()
-        last_scene = self.scene_map.next_scene('finished')
+     ] 
+     def enter(self):
+          print(Death.quips[1])
 
-        while current_scene != last_scene:
-            next_scene_name = current_scene.enter()
-            current_scene = self.scene_map.next_scene(next_scene_name)
 
-        #be sure to print out the last scene
-        current_scene.enter()
+
 
 class WeponChoice(Scene):
      def enter(self):
@@ -48,11 +54,33 @@ class WeponChoice(Scene):
 
 
 class AreanEntrance(Scene):
-     def start_scene(self):
-          print(f"""
-          You selected as your weapon. You are now being escorted to the arena! 
-          You walk out into a massive, bloodsplatter sandpit. Surronded by hundreds of bloodthirsty scanvengers and bandits a like.
-          They all want to see what you're made of!""")
+     def enter(self):
+          print("""
+          You are now being escorted to the arena! 
+          You walk out into a massive, bloodsplattered sandpit. Surronded by hundreds of bloodthirsty scanvengers and bandits a like.
+          They all want to see what you're made of!
+          
+          What looks like the Arena Master looks you up and down from the leaderbox. How do you want to respond? 
+          
+          Options:
+
+          Stay silent and calm - 1
+          
+          Provoke - 2
+          """)
+
+          
+
+          entranceChoice = input('>> ')
+
+          if entranceChoice == 'Stay silent':
+               print("The Arena Master know you're not the typical junk that gets fed through here. He decides to procede on with the event")
+
+               return OpponentEncounter()
+          elif entranceChoice == 'Provoke':
+               return Death()
+
+
 
 
 class OpponentEncounter(Scene):
@@ -61,22 +89,17 @@ class OpponentEncounter(Scene):
 class Combat(Scene):
      pass
 
-class Death(Scene):
-     pass
-
 class Victory(Scene):
      pass 
 
 
         
 
-     
+
+play()
 
 
-Rifle = Weapon()
-Rifle.DMG = randint(12-17)
 
-Machete = Weapon()
-Machete.DMG = randint(8,20)
+
 
 
