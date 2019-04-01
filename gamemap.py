@@ -1,4 +1,4 @@
-import characters
+from characters import Rifile
 
 
 class Scene(object):
@@ -35,8 +35,10 @@ class WeponChoice(Scene):
 
           if chooseWeapon == 'Rifile':
                print(f"You choose {chooseWeapon}. You're more of a ranged combantant I see...")
+               return AreanEntrance()
           elif chooseWeapon == 'Machete':
                print(f"You choose {chooseWeapon}. Up, close and personal...")
+               return AreanEntrance()
           else:
                print("That is not a valid selection. Please choose either Machete or AR-15 as your wepon choice")
                return WeponChoice()
@@ -65,5 +67,8 @@ class Victory(Scene):
      
 
 
-f = WeponChoice()
-f.enter()
+# f = WeponChoice()
+# f.enter()
+
+# gun = Rifile()
+# print(gun.DMG)
