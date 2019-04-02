@@ -11,6 +11,10 @@ class Combantant(object):
 class Hero(Combantant):
     def __init__(self):
         pass
+
+class Opponent(Combantant):
+    def __init__(self):
+        health = 100
         
 
 
