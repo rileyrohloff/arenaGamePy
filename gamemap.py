@@ -4,12 +4,13 @@ from random import randint
 from sys import exit
 
 
+
 #environment Variables:
 gladiator = Combantant()
-gladiator.health= int(100)
+gladiator.health= 100
 
 glad2 = Combantant()
-glad2.health = int(100)
+glad2.health = 100
 
 rifle = Weapon()
 rifle.DMG = randint(15,17)
@@ -43,12 +44,12 @@ class Scene(object):
 class Death(Scene):
      
      quips = [
-          "The Arena Master shoots you from his Box Stand...You're Now Dead",
+          "Wrong move...You died...",
           "You die of blunt force trauma"
 
      ] 
      def enter(self):
-          print(Death.quips[0])
+          print(Death.quips[randint(0,1)])
           exit(1)
 
 
@@ -116,13 +117,47 @@ class AreanEntrance(Scene):
 
 class OpponentEncounter(Scene):
      def enter(self):
-          print('Testing')
-          exit(1)
+          print("""
+          The other side of the arena's bay doors open, and a huge, hulking goliath of a man walks out.
+          He clearly doesn't shower regularly...
+          
+          With your weapon, you'll now have a face off with him...This will be a battle till the death...""")
+          while glad2.health > 0:
+               if glad2.health <= 0:
+                              return 'finished'
+
+               elif glad2.health > 0:
+                         print("You can either attack or pass.. 'a' is for attack and 'p' is for pass. Choose wisely..")
+
+                         combat_choice = input('a/p >> ')
+
+                         if combat_choice == 'a':
+                              print(f"You attack for {machete.DMG} damage! Enempy's health is now: ")
+                              glad2.health -= machete.DMG
+                              print(glad2.health)
+                              
+                         elif combat_choice == 'p':
+                              print(f"Enemy attacks for {machete.DMG} damage! Your health is now: ")
+                              gladiator.health -= machete.DMG
+                              print(gladiator.health)
+                              
+               elif gladiator.health <= 0:
+                    return 'death'
+          while glad2.health < 0:
+               return 'finish'
+          
+                    
+                    
+
+                    
+          
 
 
 class Victory(Scene):
+
      def enter(self):
           print("You won!")
+          exit(1)
 
 class Map(object):
 
