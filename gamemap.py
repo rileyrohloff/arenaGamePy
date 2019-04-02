@@ -96,7 +96,7 @@ class Victory(Scene):
         
 
 
-play()
+
 
 
 
